@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+    crossorigin="anonymous" 
+    />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
+
+<body>
+ <div class="login">
+   <div class="container">
+	<div class=header>Stock Price Prediction</div>
+     <!-- Main Input For Receiving Query to ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="company" placeholder="company" required="required" />
+     <button type="submit" class="submit_btn">Predict</button>
+     
+    </form>
+  
+
+   <br>
+   <h8>Forecasted Prices for next 30 days: {{fdates}}</h8>
+   <br>
+   {% for each in forecast_prices %}      
+   <h8>
+    Rs. {{ each }} <br>
+  </h8> 
+    {% endfor %}
+  <div>
+    <img src="{{url_for('static', filename=imgname1)}}" width=800 height=500 />
+    <br>    
+    <img src="{{url_for('static', filename=imgname4)}}" width=800 height=500 />
+    <br>
+    <img src="{{url_for('static', filename=imgname3)}}" width=800 height=500 />    
+    <br>
+    <img src="{{url_for('static', filename=imgname2)}}" width=800 height=500 /> 
+
+  </div>
+  </div>
+ </div>
+
+
+</body>
+</html>
